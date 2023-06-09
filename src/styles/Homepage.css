@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-size: medium;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .homepage {
@@ -83,7 +83,7 @@
   margin-top: 10px;
 }
 
-.register-button:hover{
+.register-button:hover {
   background-color: #f5005e;
 }
 
@@ -137,12 +137,12 @@
   text-align: center;
   background-color: rgb(255, 0, 0, 0.15);
   position: relative;
-background-color: rgb(255, 0 0, 0.1) ;
-width: 100%;
-border-radius: 47px 48px 47px 48px;
-overflow: hidden;
-padding: 200px 50px;
-z-index: 8;
+  background-color: rgb(255, 0 0, 0.1);
+  width: 100%;
+  border-radius: 47px 48px 47px 48px;
+  overflow: hidden;
+  padding: 200px 50px;
+  z-index: 8;
 }
 
 .searching-tips-title {
@@ -175,13 +175,13 @@ z-index: 8;
 }
 
 .searching-tips-description {
-font-size: 16px;
-line-height: 25px;
-letter-spacing: 0.8px;
-color: #fff;
-font-weight: 500;
-padding: 10px 0px;
-text-align: center;
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: 0.8px;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 0px;
+  text-align: center;
 }
 
 hr {
@@ -192,8 +192,27 @@ hr {
   border: none;
   margin: 3rem auto 3rem auto;
 }
+
+.tips-hr{
+  background-color: #5dcbf2;
+  height: 7px;
+  width: 56px;
+  border-radius: 6px;
+  border: none;
+  margin: 3rem auto 3rem auto;
+}
+
+.fav-hr{
+  background-color: #ff3366;
+  height: 7px;
+  width: 56px;
+  border-radius: 6px;
+  border: none;
+  margin: 3rem auto 3rem auto
+}
+
 .favorite {
-  background-color:rgb(51, 111, 163, 0.15);
+  background-color: rgb(51, 111, 163, 0.15);
   padding: 60px;
   margin-top: 40px;
   border-radius: 10px;
@@ -209,28 +228,28 @@ hr {
 }
 
 /* Icons sizes */
-.faHeart{
+.faHeart {
   color: red;
   font-size: 50px;
 }
 
-.faLock{
-  font-size:30px ;
-}
-
-.faEnvelope{
+.faLock {
   font-size: 30px;
 }
 
-.faSchool{
+.faEnvelope {
   font-size: 30px;
 }
 
-.faMapMarkerAlt{
+.faSchool {
   font-size: 30px;
 }
 
-.faCalendarAlt{
+.faMapMarkerAlt {
+  font-size: 30px;
+}
+
+.faCalendarAlt {
   font-size: 30px;
 }
 /* ends here */
@@ -267,7 +286,7 @@ hr {
   color: #fff;
   font-weight: 500;
   padding: 10px 0px;
-  text-align: center;;
+  text-align: center;
 }
 
 .contact {
@@ -301,5 +320,4 @@ hr {
   margin-top: 40px;
   font-size: 12px;
   color: #f7f3f4;
-  
 }

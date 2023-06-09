@@ -51,7 +51,7 @@ function Homepage() {
 
     // Make API request to register user
     try {
-      const response = await fetch("http://127.0.0.1:8000/register", {
+      const response = await fetch("http://127.0.0.1:8000/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -298,7 +298,7 @@ function Homepage() {
 
       <section className="searching-tips">
         <h2 className="searching-tips-title">Searching Tips</h2>
-        <hr />
+        <hr className="tips-hr" />
         <div className="searching-tips-items">
           <div className="searching-tips-item">
             <div className="searching-tips-icon">
@@ -348,6 +348,8 @@ function Homepage() {
         <h3 className="favorite-title">
           <FontAwesomeIcon className="faHeart" icon={faHeart} /> Favorite
         </h3>
+        <hr className="fav-hr" />
+
         <p className="favorite-description">
           Add people to your favorite list to keep track of your matches. Let
           them know you are interested by sending them a message. You can view
@@ -360,6 +362,8 @@ function Homepage() {
         <h3 className="Safe-secure-title">
           <FontAwesomeIcon className="faLock" icon={faLock} /> Safe & Secure
         </h3>
+        <hr className="fav-hr" />
+
         <p className="Safe-secure-description">
           We are committed to protecting your privacy. Your personal information
           is kept safe and secure. We want to make sure you have a safe
