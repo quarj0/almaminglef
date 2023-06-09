@@ -1,0 +1,63 @@
+.reset-password-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.reset-body {
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.reset-group {
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.reset-group input,
+.reset-group select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.back-to-login a {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  align-items: center;
+}
+
+.reset-password-text {
+    margin: 20px;
+    font-weight: 700;
+    width: 100%;
+    float: none;
+    text-align: center;
+    font-size: 17px;
+    line-height: 18px;
+    letter-spacing: .85px;
+    font-family: 'Montserrat',sans-serif !important;
+    color: #fff;
+}
+
+.reset-button {
+  background-color: #ff3366;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 3em;
+}
+
+.reset-button:hover {
+  background-color: #f5005e;
+}

@@ -1,11 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: medium;
-  font-family: 'Poppins';
-}
-
 .homepage {
   text-align: center;
   padding: 20px;
@@ -16,7 +8,6 @@
 }
 
 .title {
-  margin: 50px;
   font-size: 45px;
   color: white;
   font-weight: bold;
@@ -39,6 +30,21 @@
   max-width: 50%;
   margin: 0 auto;
 }
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forget-password-text a{
+color: #fff;
+}
+
+.login-body {
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .form-group {
   margin-bottom: 20px;
   text-align: left;
@@ -51,22 +57,14 @@
 
 .form-group input,
 .form-group select {
-  color: #fff;
-  width: 80%;
+    color: #fff;
+  width: 100%;
   padding: 8px;
-  border: 2px #494848;
   border-radius: 8px;
 }
 
 .form-group select {
   cursor: pointer;
-}
-
-.dob-fields {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-  width: 80%;
 }
 
 .register-button {
@@ -77,33 +75,13 @@
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
 }
 
-.register-button:hover{
+.register-button:hover {
   background-color: #f5005e;
-}
-
-.terms {
-  font-size: 12px;
-  margin-top: 10px;
-}
-
-.terms a {
-  color: rgb(202, 0, 0);
-  text-decoration: underline;
-}
-
-.login-link {
-  margin-top: 20px;
-}
-
-.login-link a {
-  color: rgb(255, 0, 0);
-  text-decoration: none;
 }
 
 .about {
@@ -137,12 +115,12 @@
   text-align: center;
   background-color: rgb(255, 0, 0, 0.15);
   position: relative;
-background-color: rgb(255, 0 0, 0.1) ;
-width: 100%;
-border-radius: 47px 48px 47px 48px;
-overflow: hidden;
-padding: 200px 50px;
-z-index: 8;
+  background-color: rgb(255, 0 0, 0.1);
+  width: 100%;
+  border-radius: 47px 48px 47px 48px;
+  overflow: hidden;
+  padding: 200px 50px;
+  z-index: 8;
 }
 
 .searching-tips-title {
@@ -175,13 +153,13 @@ z-index: 8;
 }
 
 .searching-tips-description {
-font-size: 16px;
-line-height: 25px;
-letter-spacing: 0.8px;
-color: #fff;
-font-weight: 500;
-padding: 10px 0px;
-text-align: center;
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: 0.8px;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 0px;
+  text-align: center;
 }
 
 hr {
@@ -193,7 +171,7 @@ hr {
   margin: 3rem auto 3rem auto;
 }
 .favorite {
-  background-color:rgb(51, 111, 163, 0.15);
+  background-color: rgb(51, 111, 163, 0.15);
   padding: 60px;
   margin-top: 40px;
   border-radius: 10px;
@@ -209,28 +187,28 @@ hr {
 }
 
 /* Icons sizes */
-.faHeart{
+.faHeart {
   color: red;
   font-size: 50px;
 }
 
-.faLock{
-  font-size:30px ;
-}
-
-.faEnvelope{
+.faLock {
   font-size: 30px;
 }
 
-.faSchool{
+.faEnvelope {
   font-size: 30px;
 }
 
-.faMapMarkerAlt{
+.faSchool {
   font-size: 30px;
 }
 
-.faCalendarAlt{
+.faMapMarkerAlt {
+  font-size: 30px;
+}
+
+.faCalendarAlt {
   font-size: 30px;
 }
 /* ends here */
@@ -267,7 +245,7 @@ hr {
   color: #fff;
   font-weight: 500;
   padding: 10px 0px;
-  text-align: center;;
+  text-align: center;
 }
 
 .contact {
@@ -301,5 +279,4 @@ hr {
   margin-top: 40px;
   font-size: 12px;
   color: #f7f3f4;
-  
 }
