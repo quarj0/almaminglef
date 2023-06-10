@@ -1,0 +1,118 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 200px;
+  background-color: #f2f2f2;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+}
+
+#dashboard {
+  height: 100%;
+}
+
+#dashboard #menu-items{
+  background: #181F29;
+}
+
+#menu-items {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  color: #4f4f4f;
+  font-size: 15px;
+  z-index: 9998;
+}
+.dashboard.open {
+  transform: translateX(0);
+}
+
+#menu-items #dashboard {
+height: 100%;
+width: 100%;
+position: absolute;
+left: 0;
+background: #fff;
+-webkit-transform: translateX(0);
+-ms-transform: translateX(0);
+-o-transform: translateX(0);
+transform: translateX(0);
+-webkit-transition: transform .5s cubic-bezier(0,0,.2,1);
+-moz-transition: transform .5s cubic-bezier(0,0,.2,1);
+-o-transition: transform .5s cubic-bezier(0,0,.2,1);
+transition: transform .5s cubic-bezier(0,0,.2,1);
+}
+
+.dashboard-section {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dashboard-section:hover {
+  background-color: #e0e0e0;
+}
+
+.profile-section {
+  background-color: #4c5866;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.chat-section,
+.look-through-section,
+.views-section,
+.favorite-section,
+.wallet-section {
+  padding: 10px;
+}
+
+.settings-section,
+.help-section {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #4c5866;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    width: 100%;
+  }
+}

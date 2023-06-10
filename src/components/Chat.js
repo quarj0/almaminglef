@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import '../styles/chat.css';
+
 const Chatting = () => {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState("");
@@ -69,28 +71,34 @@ const Chatting = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="chat-container">
+      <div className="chat-mates-container">
         {chatMates.map((chatMate) => (
-          <div key={chatMate.id} onClick={() => selectChatMate(chatMate)}>
+          <div
+            key={chatMate.id}
+            className={`chat-mate ${
+              selectedChatMate && selectedChatMate.id === chatMate.id ? "selected" : ""
+            }`}
+            onClick={() => selectChatMate(chatMate)}
+          >
             <img src={chatMate.profilePicture} alt="Profile" />
             <p>{chatMate.username}</p>
             <p>{chatMate.university}</p>
           </div>
         ))}
       </div>
-      <div>
+      <div className={`chat-window ${isChatHidden ? "hidden" : ""}`}>
         {!isChatHidden && selectedChatMate && (
-          <div>
-            <div>
+          <div className="chat-content">
+            <div className="chat-header">
               <img src={selectedChatMate.profilePicture} alt="Profile" />
               <p>{selectedChatMate.username}</p>
               <p>{selectedChatMate.university}</p>
               <button onClick={toggleChatVisibility}>Hide Chat</button>
             </div>
-            <div>
+            <div className="messages">
               {messages.map((message) => (
-                <div key={message.id}>
+                <div key={message.id} className="message">
                   <p>
                     {message.sender}: {message.text}
                   </p>
@@ -98,7 +106,7 @@ const Chatting = () => {
                 </div>
               ))}
             </div>
-            <div>
+            <div className="input-section">
               <input
                 type="text"
                 value={inputText}
@@ -110,7 +118,7 @@ const Chatting = () => {
           </div>
         )}
         {isChatHidden && (
-          <div>
+          <div className="hidden-chat">
             <button onClick={toggleChatVisibility}>Show Chat</button>
             <button>Block User</button>
           </div>

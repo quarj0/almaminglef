@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const LookThrough = () => {
+const Search = () => {
   const [potentialMatches, setPotentialMatches] = useState([]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const LookThrough = () => {
 
   return (
     <div className="look-through-section">
-      <h2>Look Through</h2>
+      <h2>Find match</h2>
       <div className="potential-matches">
         {potentialMatches.map((match) => (
           <div key={match.id} className="match-card">
@@ -62,4 +62,4 @@ const LookThrough = () => {
   );
 };
 
-export default LookThrough;
+export default Search;

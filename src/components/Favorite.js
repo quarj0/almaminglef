@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/Favorite.css";
 
 const Favorites = ({ userId }) => {
   const [favorites, setFavorites] = useState([]);
@@ -41,7 +42,14 @@ const Favorites = ({ userId }) => {
   };
 
   return (
-    <div className="favorites-container">
+    <div className="favorites-container-wrapper">
+      <div className="favorites-container">
+
+      <div className="favorite-buttons-container">
+        <div className="add-me-favorite-btn favorite-card">Add Me as Favorite</div>
+        <div className="add-favorite-btn favorite-card">Add Favorite</div>
+      </div>
+
       <h2>My Favorites</h2>
       {favorites.length > 0 ? (
         <ul className="favorites-list">
@@ -58,11 +66,11 @@ const Favorites = ({ userId }) => {
         <ul className="added-by-list">
           {addedBy.map((user) => (
             <li key={user.id} className="added-by-item">{user.username}</li>
-          ))}
+            ))}
         </ul>
       ) : (
         <p>No one added you as their favorite yet.</p>
-      )}
+        )}
 
       {!showUserCards && (
         <button className="add-favorite-btn" onClick={handleAddFavorite}>Add Favorite</button>
@@ -84,9 +92,10 @@ const Favorites = ({ userId }) => {
             </div>
           ) : (
             <p>No users found.</p>
-          )}
+            )}
         </div>
       )}
+      </div>
     </div>
   );
 };

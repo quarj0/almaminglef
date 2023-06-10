@@ -1,0 +1,85 @@
+/* chat.css */
+
+.chat-container .chat-content {
+    position: relative;
+    height: 100%;
+  }
+  
+  .chat-mates-container {
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .chat-mate {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .chat-mate.selected {
+    background-color: #e6e6e6;
+  }
+  
+  .chat-window {
+    flex: 2;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+  }
+  
+  .chat-window.hidden {
+    display: none;
+  }
+  
+  .chat-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .chat-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .input-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-section input[type="text"],
+  .input-section input[type="file"],
+  .input-section button {
+    margin-right: 10px;
+  }
+  
+  .hidden-chat {
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  @media only screen and (min-width: 768px){
+    .chat-mates-container .chat-container {
+        width: 300px;
+        position: relative;
+      }
+  }
