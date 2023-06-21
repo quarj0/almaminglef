@@ -202,14 +202,7 @@ hr {
   margin: 3rem auto 3rem auto;
 }
 
-.fav-hr{
-  background-color: #ff3366;
-  height: 7px;
-  width: 56px;
-  border-radius: 6px;
-  border: none;
-  margin: 3rem auto 3rem auto
-}
+
 
 .favorite {
   background-color: rgb(51, 111, 163, 0.15);

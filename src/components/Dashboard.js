@@ -1,54 +1,201 @@
-import React, { useState } from 'react';
-import Profile from './Profile';
-import Chat from './Chat';
-import Wallet from './Wallet';
-import Search from './Search';
-import Views from './Views';
-import Settings from './Settings';
-import Favorite from './Favorite';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSignOutAlt,
+  faSearch,
+  faUserCircle,
+  faHeartCirclePlus,
+  faQuestion,
+  faCoins,
+  faComments,
+  faEdit,
+  faBars
+} from "@fortawesome/free-solid-svg-icons";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import '../styles/Dashboard.css';
+import Chat from "./Chat";
+import Favorites from "./Favorite";
+import Profile from "./Profile";
+import Search from "./Search";
+import Wallet from "./Wallet";
+import Settings from "./Settings";
 
-const Dashboard = () => {
-  const [isOpen, setIsOpen] = useState(false);
+import "../styles/Dashboard.css";
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+
+
+const Sidebar = () => {
+  const [activeSection, setActiveSection] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const handleToggleMenu = () => {
+    setShowMenu(!showMenu); // toggle the state variable when the hamburger icon is clicked
   };
 
+
+
   return (
-    <div className={`dashboard ${isOpen ? 'open' : ''}`}>
-      <div className="hamburger" onClick={toggleSidebar}>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div className={`sidebar ${showMenu ? 'show-menu' : ''}`}>
+      <div className="sidebar-header">
+        <button className="menu-button" onClick={handleToggleMenu}>
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <h3 className="logo">Dashboard</h3>
       </div>
-      <div className="dashboard-section profile-section fixed">
-        <Profile />
+      <ul className={showMenu ? "show-menu" : ""}>
+      <li
+          className={activeSection === "profile" ? "active" : ""}
+          onClick={() => {
+            setActiveSection("profile");
+            setUserId(userId);
+          }}
+        >
+          <Link to={`/profile/${userId}`}>
+            <span className="icon">
+              <FontAwesomeIcon className="faUser" icon={faUserCircle} />
+            </span>
+            {activeSection === "profile" && (
+              <span className="name">Profile</span>
+            )}
+          </Link>
+        </li>
+        <li
+          className={activeSection === "chat" ? "active" : ""}
+          onClick={() => setActiveSection("chat")}
+        >
+          <Link to="#chat">
+            <span className="icon">
+              <FontAwesomeIcon className="faMessage" icon={faComments} />
+            </span>
+            {activeSection === "chat" && <span className="name">Chat</span>}
+          </Link>
+        </li>
+
+        <li
+          className={activeSection === "favorites" ? "active" : ""}
+          onClick={() => setActiveSection("favorites")}
+        >
+          <Link to="#favorites">
+            <span className="icon">
+              <FontAwesomeIcon
+                className="faHeartCirclePlus"
+                icon={faHeartCirclePlus}
+              />
+            </span>
+            {activeSection === "favorites" && (
+              <span className="name">Favorites</span>
+            )}
+          </Link>
+        </li>
+
+        <li
+          className={activeSection === "search" ? "active" : ""}
+          onClick={() => setActiveSection("search")}
+        >
+          <Link to="#search">
+            <span className="icon">
+              <FontAwesomeIcon className="faSearch" icon={faSearch} />
+            </span>
+            {activeSection === "search" && <span className="name">Search</span>}
+          </Link>
+        </li>
+
+        <li
+          className={activeSection === "wallet" ? "active" : ""}
+          onClick={() => setActiveSection("wallet")}
+        >
+          <Link to="#wallet">
+            <span className="icon">
+              <FontAwesomeIcon className="faWallet" icon={faCoins} />
+            </span>
+            {activeSection === "wallet" && <span className="name">Wallet</span>}
+          </Link>
+        </li>
+
+        <li
+          className={activeSection === "settings" ? "active" : ""}
+          onClick={() => setActiveSection("settings")}
+        >
+          <Link to="#settings">
+            <span className="icon">
+              <FontAwesomeIcon className="faEdit" icon={faEdit} />
+            </span>
+            {activeSection === "settings" && (
+              <span className="name">Settings</span>
+            )}
+          </Link>
+        </li>
+
+        <li
+          className={activeSection === "help" ? "active" : ""}
+          onClick={() => setActiveSection("help")}
+        >
+          <Link to="#help">
+            <span className="icon">
+              <FontAwesomeIcon className="faQuestion" icon={faQuestion} />
+            </span>
+            {activeSection === "help" && <span className="name">Help</span>}
+          </Link>
+        </li>
+
+        <li
+          className={activeSection === "logout" ? "active" : ""}
+          onClick={() => setActiveSection("logout")}
+        >
+          <Link to="/login">
+            <span className="icon">
+              <FontAwesomeIcon className="faSignoutAlt" icon={faSignOutAlt} />
+            </span>
+            {activeSection === "logout" && (
+              <span className="name">Log out</span>
+            )}
+          </Link>
+        </li>
+      </ul>
+
+      <div className="content-area">
+        {activeSection === "chat" && (
+          <div className="chat-area">
+            <h2>Chat</h2>
+            <Chat />
+          </div>
+        )}
+        {activeSection === "favorites" && (
+          <div className="favorites-area">
+            <h2>Favorites</h2>
+            <Favorites />
+          </div>
+        )}
+        {activeSection === "profile" && (
+          <div className="profile-area">
+            <h2>Profile</h2>
+            <Profile />
+          </div>
+        )}
+        {activeSection === "search" && (
+          <div className="search-area">
+            <h2>Search</h2>
+            <Search />
+          </div>
+        )}
+        {activeSection === "wallet" && (
+          <div className="wallet-area">
+            <h2>Wallet</h2>
+            <Wallet />
+          </div>
+        )}
+        {activeSection === "settings" && (
+          <div className="settings-area">
+            <h2>Settings</h2>
+            <Settings />
+          </div>
+        )}
       </div>
-      <div className="dashboard-section chat-section">
-        <Chat />
-      </div>
-      <div className="dashboard-section look-through-section">
-        <Search />
-      </div>
-      <div className="dashboard-section views-section">
-        <Views />
-      </div>
-      <div className="dashboard-section favorite-section">
-        <Favorite />
-      </div>
-      <div className="dashboard-section wallet-section">
-        <Wallet />
-      </div>
-      <div className="dashboard-section settings-section fixed">
-        <Settings />
-      </div>
-      {/* <div className="dashboard-section help-section fixed">
-        <Help />
-      </div> */}
     </div>
   );
 };
 
-export default Dashboard;
+export default Sidebar;

@@ -148,6 +148,7 @@ function ResetPasswd() {
         <h3 className="favorite-title">
           <FontAwesomeIcon className="faHeart" icon={faHeart} /> Favorite
         </h3>
+        <hr />
         <p className="favorite-description">
           Add people to your favorite list to keep track of your matches. Let
           them know you are interested by sending them a message. You can view

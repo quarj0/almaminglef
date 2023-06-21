@@ -164,6 +164,7 @@ function LoginPage() {
         <h3 className="favorite-title">
           <FontAwesomeIcon className="faHeart" icon={faHeart} /> Favorite
         </h3>
+        <hr/>
         <p className="favorite-description">
           Add people to your favorite list to keep track of your matches. Let
           them know you are interested by sending them a message. You can view
@@ -175,6 +176,7 @@ function LoginPage() {
         <h3 className="Safe-secure-title">
           <FontAwesomeIcon className="faLock" icon={faLock} /> Safe & Secure
         </h3>
+        <hr/>
         <p className="Safe-secure-description">
           We are committed to protecting your privacy. Your personal information
           is kept safe and secure. We want to make sure you have a safe
