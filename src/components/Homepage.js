@@ -35,7 +35,6 @@ function Homepage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [university, setUniversity] = useState("");
-  const [location, setLocation] = useState("");
   const [dobDay, setDobDay] = useState("");
   const [dobMonth, setDobMonth] = useState("");
   const [dobYear, setDobYear] = useState("");
@@ -51,7 +50,7 @@ function Homepage() {
 
     // Make API request to register user
     try {
-      const response = await fetch("api/register", {
+      const response = await fetch("http://127.0.0.1:8000/almamingle/v1/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +60,6 @@ function Homepage() {
           email,
           password,
           university,
-          location,
           dob,
           gender,
         }),
@@ -77,6 +75,7 @@ function Homepage() {
       }
     } catch (error) {
       console.error("An error occurred during registration:", error);
+      console.log("http://127.0.0.1:8000/almamingle/v1/register/")
       setErrorMessage(
         "An error occurred during registration. Please try again later."
       );
@@ -88,7 +87,7 @@ function Homepage() {
 
     // Make API request to verify OTP
     try {
-      const response = await fetch("api/verify-otp/", {
+      const response = await fetch("http://127.0.0.1:8000/almamingle/v1/verify-email/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -204,17 +203,6 @@ function Homepage() {
           </div>
         </div>
         <div className="form-column">
-          <div className="form-group">
-            <input
-              type="text"
-              id="location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              required
-              placeholder="location"
-              style={{ backgroundColor: "transparent" }}
-            />
-          </div>
           <div className="form-group">
             <div className="dob-fields">
               <input

@@ -7,7 +7,7 @@ const Profile = ({ userId }) => {
 
   useEffect(() => {
     if (userId){
-    axios.get(`/api/profile/${userId}`)
+    axios.get(`http://127.0.0.1:8000/almamingle/v1/users/${userId}`)
       .then(response => {
         setProfileData(response.data);
       })
@@ -20,7 +20,7 @@ const Profile = ({ userId }) => {
   if (!profileData) {
     return (
       <div className="profile-page-container">
-      <profileData profileData={profileData} />
+      Loading...
     </div>
     );
   }
