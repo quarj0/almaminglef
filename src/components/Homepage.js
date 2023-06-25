@@ -50,7 +50,7 @@ function Homepage() {
 
     // Make API request to register user
     try {
-      const response = await fetch("http://127.0.0.1:8000/almamingle/v1/register/", {
+      const response = await fetch("api/v1", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,6 @@ function Homepage() {
       }
     } catch (error) {
       console.error("An error occurred during registration:", error);
-      console.log("http://127.0.0.1:8000/almamingle/v1/register/")
       setErrorMessage(
         "An error occurred during registration. Please try again later."
       );
@@ -87,7 +86,7 @@ function Homepage() {
 
     // Make API request to verify OTP
     try {
-      const response = await fetch("http://127.0.0.1:8000/almamingle/v1/verify-email/", {
+      const response = await fetch("api/v1", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +114,7 @@ function Homepage() {
   if (isRegistered) {
     return (
       <div className="otp-verification">
-        <h1>OTP Verification</h1>
+        <h1>Account Verification</h1>
         <p className="otp-description">
           A verification code has been sent to your email. Please enter the code
           below to complete the registration process.

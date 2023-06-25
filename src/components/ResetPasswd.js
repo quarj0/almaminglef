@@ -21,7 +21,7 @@ function ResetPasswd() {
 
     // Make API request to reset password
     try {
-      const response = await fetch("api/reset-password/", {
+      const response = await fetch("http://localhost:8000/password-reset/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ function ResetPasswd() {
 
       if (response.ok) {
         // Password reset email sent successfully
-        setErrorMessage("Password reset email sent. Please check your inbox.");
+        alert("Password reset email sent. Please check your inbox.");
       } else {
         const data = await response.json();
         setErrorMessage(data.message);

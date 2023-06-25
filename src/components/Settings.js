@@ -11,7 +11,6 @@ const Settings = () => {
     favoritesOnline: false,
     profileUpdates: false,
     favoritedMe: false,
-    newCoins: false,
     newMatch: false,
     seasonalOffers: false,
   });
@@ -21,7 +20,6 @@ const Settings = () => {
     viewedMe: false,
     flirtedWithMe: false,
     favoritedMe: false,
-    newCoinsAdded: false,
     newMatch: false,
     seasonalOffers: false,
   });
@@ -99,9 +97,16 @@ const Settings = () => {
           </label>
         </div>
         <div className="settings-buttons">
-          <button className="settings-button" onClick={handleDeleteAccount}>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            onClick={handleDeleteAccount}
+          >
             Delete Account
           </button>
+
           <button className="settings-button" onClick={handleChangePassword}>
             Change Password
           </button>
@@ -218,20 +223,6 @@ const Settings = () => {
           </div>
           <div className="toggle-switch-container">
             <label className="toggle-switch-label">
-              New Coins
-              <label className="toggle-switch">
-                <input
-                  type="checkbox"
-                  className="toggle-switch-input"
-                  checked={emailNotifications.newCoins}
-                  onChange={() => handleEmailNotificationsToggle("newCoins")}
-                />
-                <span className="toggle-switch-slider"></span>
-              </label>
-            </label>
-          </div>
-          <div className="toggle-switch-container">
-            <label className="toggle-switch-label">
               New Match
               <label className="toggle-switch">
                 <input
@@ -262,120 +253,110 @@ const Settings = () => {
           </div>
         </div>
         <div className="settings-block notifications-block">
+          <div className="email-notification-header">Push Notifications</div>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              All
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.all}
+                  onChange={handlePushAllToggle}
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              New Messages
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.newMessages}
+                  onChange={() => handlePushNotificationsToggle("newMessages")}
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              Viewed Me
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.viewedMe}
+                  onChange={() => handlePushNotificationsToggle("viewedMe")}
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              Flirted With Me
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.flirtedWithMe}
+                  onChange={() =>
+                    handlePushNotificationsToggle("flirtedWithMe")
+                  }
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
+            </label>
+          </div>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              Favorited Me
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.favoritedMe}
+                  onChange={() => handlePushNotificationsToggle("favoritedMe")}
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
+            </label>
+          </div>
 
-        <div className="email-notification-header">Push Notifications</div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            All
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.all}
-                onChange={handlePushAllToggle}
-              />
-              <span className="toggle-switch-slider"></span>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              New Match
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.newMatch}
+                  onChange={() => handlePushNotificationsToggle("newMatch")}
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
             </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            New Messages
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.newMessages}
-                onChange={() => handlePushNotificationsToggle("newMessages")}
-              />
-              <span className="toggle-switch-slider"></span>
+          </div>
+          <div className="toggle-switch-container">
+            <label className="toggle-switch-label">
+              Seasonal Offers
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="toggle-switch-input"
+                  checked={pushNotifications.seasonalOffers}
+                  onChange={() =>
+                    handlePushNotificationsToggle("seasonalOffers")
+                  }
+                />
+                <span className="toggle-switch-slider"></span>
+              </label>
             </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            Viewed Me
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.viewedMe}
-                onChange={() => handlePushNotificationsToggle("viewedMe")}
-              />
-              <span className="toggle-switch-slider"></span>
-            </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            Flirted With Me
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.flirtedWithMe}
-                onChange={() => handlePushNotificationsToggle("flirtedWithMe")}
-              />
-              <span className="toggle-switch-slider"></span>
-            </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            Favorited Me
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.favoritedMe}
-                onChange={() => handlePushNotificationsToggle("favoritedMe")}
-              />
-              <span className="toggle-switch-slider"></span>
-            </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            New Coins Added
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.newCoinsAdded}
-                onChange={() => handlePushNotificationsToggle("newCoinsAdded")}
-              />
-              <span className="toggle-switch-slider"></span>
-            </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            New Match
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.newMatch}
-                onChange={() => handlePushNotificationsToggle("newMatch")}
-              />
-              <span className="toggle-switch-slider"></span>
-            </label>
-          </label>
-        </div>
-        <div className="toggle-switch-container">
-          <label className="toggle-switch-label">
-            Seasonal Offers
-            <label className="toggle-switch">
-              <input
-                type="checkbox"
-                className="toggle-switch-input"
-                checked={pushNotifications.seasonalOffers}
-                onChange={() => handlePushNotificationsToggle("seasonalOffers")}
-              />
-              <span className="toggle-switch-slider"></span>
-            </label>
-          </label>
-        </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/ProfilePage.css';
 
 const Profile = ({ userId }) => {
@@ -7,7 +8,7 @@ const Profile = ({ userId }) => {
 
   useEffect(() => {
     if (userId){
-    axios.get(`http://127.0.0.1:8000/almamingle/v1/users/${userId}`)
+    axios.get(`api/users/${userId}`)
       .then(response => {
         setProfileData(response.data);
       })
@@ -37,10 +38,10 @@ const Profile = ({ userId }) => {
   const galleryImages = profileData.galleryImages || [];
 
   return (
-    <div className="profile-page-container">
-      <div className="profile-card">
-        <img src={profilePictureSrc} alt="Profile" />
-        <h1>{profileData.username}</h1>
+    <div className="profile-page-container card mb-3" >
+        <img src={profilePictureSrc} alt="Profile" className="card-img-top" />
+      <div className="profile-card card-body">
+        <h1 className="card-title">{profileData.username}</h1>
         <h2>{universityName}</h2>
         <h3>{profileData.age} , {program}</h3>
       </div>

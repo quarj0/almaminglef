@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignOutAlt,
@@ -10,7 +11,7 @@ import {
   faCoins,
   faComments,
   faEdit,
-  faBars
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -18,27 +19,21 @@ import Chat from "./Chat";
 import Favorites from "./Favorite";
 import Profile from "./Profile";
 import Search from "./Search";
-import Wallet from "./Wallet";
 import Settings from "./Settings";
 
-import "../styles/Dashboard.css";
-
-
+import "../styles/Sidebar.css";
 
 const Sidebar = () => {
   const [activeSection, setActiveSection] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [selectedUserId, setSelectedUserId] = useState(null);
 
   const handleToggleMenu = () => {
     setShowMenu(!showMenu); // toggle the state variable when the hamburger icon is clicked
   };
 
-
-
   return (
-    <div className={`sidebar ${showMenu ? 'show-menu' : ''}`}>
+    <div className={`sidebar ${showMenu ? "show-menu" : ""} con`}>
       <div className="sidebar-header">
         <button className="menu-button" onClick={handleToggleMenu}>
           <FontAwesomeIcon icon={faBars} />
@@ -46,7 +41,7 @@ const Sidebar = () => {
         <h3 className="logo">Dashboard</h3>
       </div>
       <ul className={showMenu ? "show-menu" : ""}>
-      <li
+        <li
           className={activeSection === "profile" ? "active" : ""}
           onClick={() => {
             setActiveSection("profile");
@@ -181,12 +176,7 @@ const Sidebar = () => {
             <Search />
           </div>
         )}
-        {activeSection === "wallet" && (
-          <div className="wallet-area">
-            <h2>Wallet</h2>
-            <Wallet />
-          </div>
-        )}
+
         {activeSection === "settings" && (
           <div className="settings-area">
             <h2>Settings</h2>

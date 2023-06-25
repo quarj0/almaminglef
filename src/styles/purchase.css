@@ -1,0 +1,53 @@
+.coin-purchase-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .coin-purchase-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .coin-purchase-select {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .coin-purchase-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .coin-purchase-button:hover {
+    background-color: #0069d9;
+  }
+  
+  .coin-purchase-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .coin-purchase-error {
+    color: red;
+    margin-top: 10px;
+    font-size: 16px;
+  }

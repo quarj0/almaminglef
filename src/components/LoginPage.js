@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   faHeart,
   faLock,
@@ -12,17 +13,25 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "../styles/LoginPage.css";
 
-function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const LoginPage = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = async (event) => {
+  const { username, password } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (event) => {
     event.preventDefault();
 
-    // Make API request to login user
+    // Make API request to login
+
     try {
-      const response = await fetch("http://127.0.0.1:8000/almamingle/v1/login/", {
+      const response = await fetch("api/v1", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,10 +43,10 @@ function LoginPage() {
       });
 
       if (response.ok) {
-        // Login successful, redirect to dashboard or homepage
-        setErrorMessage("");
-        // Redirect to dashboard or homepage
-        window.location.href = "/dashboard";
+        // Login successful
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
+        window.location.href = "/profile";
       } else {
         const data = await response.json();
         setErrorMessage(data.message);
@@ -56,14 +65,14 @@ function LoginPage() {
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <form className="login-form" onSubmit={handleLogin}>
+      <form className="login-form" onSubmit={onChange}>
         <div className="login-body">
           <div className="form-group">
             <input
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => username(e.target.value)}
               required
               placeholder="Username"
               style={{ backgroundColor: "transparent" }}
@@ -74,7 +83,7 @@ function LoginPage() {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => password(e.target.value)}
               required
               placeholder="Password"
               style={{ backgroundColor: "transparent" }}
@@ -164,7 +173,7 @@ function LoginPage() {
         <h3 className="favorite-title">
           <FontAwesomeIcon className="faHeart" icon={faHeart} /> Favorite
         </h3>
-        <hr/>
+        <hr />
         <p className="favorite-description">
           Add people to your favorite list to keep track of your matches. Let
           them know you are interested by sending them a message. You can view
@@ -176,7 +185,7 @@ function LoginPage() {
         <h3 className="Safe-secure-title">
           <FontAwesomeIcon className="faLock" icon={faLock} /> Safe & Secure
         </h3>
-        <hr/>
+        <hr />
         <p className="Safe-secure-description">
           We are committed to protecting your privacy. Your personal information
           is kept safe and secure. We want to make sure you have a safe
@@ -202,6 +211,6 @@ function LoginPage() {
       <p className="footer">&copy; 2021 Luvmee - All Rights Reserved</p>
     </div>
   );
-}
+};
 
 export default LoginPage;
