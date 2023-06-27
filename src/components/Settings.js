@@ -99,7 +99,7 @@ const Settings = () => {
         <div className="settings-buttons">
           <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
             onClick={handleDeleteAccount}
@@ -107,7 +107,13 @@ const Settings = () => {
             Delete Account
           </button>
 
-          <button className="settings-button" onClick={handleChangePassword}>
+          <button
+            className="btn btn-primary"
+            data-bs-target="#staticBackdrop"
+            type="button"
+            data-bs-toggle="modal"
+            onClick={handleChangePassword}
+          >
             Change Password
           </button>
         </div>

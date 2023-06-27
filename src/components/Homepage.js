@@ -11,6 +11,7 @@ import {
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "../styles/Homepage.css";
+import { toast } from "react-toastify";
 
 const topUniversities = [
   "University of Cape Coast",
@@ -67,7 +68,7 @@ function Homepage() {
 
       if (response.ok) {
         // Registration successful, show success message and ask for OTP
-        setErrorMessage("");
+        // setErrorMessage("");
         setIsRegistered(true);
       } else {
         const data = await response.json();
@@ -75,7 +76,7 @@ function Homepage() {
       }
     } catch (error) {
       console.error("An error occurred during registration:", error);
-      setErrorMessage(
+      toast(
         "An error occurred during registration. Please try again later."
       );
     }
@@ -96,7 +97,7 @@ function Homepage() {
 
       if (response.ok) {
         // OTP verification successful, redirect to login page
-        setErrorMessage("");
+        // setErrorMessage("");
         // Redirect to login page
         window.location.href = "/login";
       } else {
@@ -105,7 +106,7 @@ function Homepage() {
       }
     } catch (error) {
       console.error("An error occurred during OTP verification:", error);
-      setErrorMessage(
+      toast(
         "An error occurred during OTP verification. Please try again later."
       );
     }
@@ -185,6 +186,7 @@ function Homepage() {
           </div>
           <div className="form-group">
             <select
+              className="form-select"
               id="university"
               value={university}
               onChange={(e) => setUniversity(e.target.value)}
@@ -192,7 +194,6 @@ function Homepage() {
               placeholder="university"
               style={{ backgroundColor: "transparent" }}
             >
-              {/* <option value=""></option> */}
               {topUniversities.map((uni) => (
                 <option key={uni} value={uni}>
                   {uni}
@@ -255,8 +256,9 @@ function Homepage() {
               Register
             </button>
             <p className="terms">
-              By clicking Register, you agree to our <a href={'javascript.void(0)'}>Terms</a>{" "}
-              and that you have read our <a href="javascript.void(0)">Privacy Policy</a>.
+              By clicking Register, you agree to our{" "}
+              <a href={"javascript.void(0)"}>Terms</a> and that you have read
+              our <a href="javascript.void(0)">Privacy Policy</a>.
             </p>
             <br />
             <p className="login-link">
@@ -373,7 +375,7 @@ function Homepage() {
       </section>
 
       <br />
-      <p className="footer">&copy; 2021 Luvmee - All Rights Reserved</p>
+      <p className="footer">&copy; 2021 AlmaMingle - All Rights Reserved</p>
     </div>
   );
 }

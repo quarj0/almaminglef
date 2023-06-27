@@ -33,7 +33,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`sidebar ${showMenu ? "show-menu" : ""} con`}>
+    <div className={`sidebar ${showMenu ? "show-menu" : ""}`}>
       <div className="sidebar-header">
         <button className="menu-button" onClick={handleToggleMenu}>
           <FontAwesomeIcon icon={faBars} />
@@ -48,7 +48,7 @@ const Sidebar = () => {
             setUserId(userId);
           }}
         >
-          <Link to={`/profile/${userId}`}>
+          <Link to={`/session/profile/`}> {/*/session/profile/${userId} is how it's supposed to be, but later. */}
             <span className="icon">
               <FontAwesomeIcon className="faUser" icon={faUserCircle} />
             </span>
@@ -61,7 +61,7 @@ const Sidebar = () => {
           className={activeSection === "chat" ? "active" : ""}
           onClick={() => setActiveSection("chat")}
         >
-          <Link to="#chat">
+          <Link to="session/chat/list">
             <span className="icon">
               <FontAwesomeIcon className="faMessage" icon={faComments} />
             </span>
@@ -73,7 +73,7 @@ const Sidebar = () => {
           className={activeSection === "favorites" ? "active" : ""}
           onClick={() => setActiveSection("favorites")}
         >
-          <Link to="#favorites">
+          <Link to="/session/favorites">
             <span className="icon">
               <FontAwesomeIcon
                 className="faHeartCirclePlus"
@@ -90,7 +90,7 @@ const Sidebar = () => {
           className={activeSection === "search" ? "active" : ""}
           onClick={() => setActiveSection("search")}
         >
-          <Link to="#search">
+          <Link to="/session/search">
             <span className="icon">
               <FontAwesomeIcon className="faSearch" icon={faSearch} />
             </span>
@@ -102,7 +102,7 @@ const Sidebar = () => {
           className={activeSection === "wallet" ? "active" : ""}
           onClick={() => setActiveSection("wallet")}
         >
-          <Link to="#wallet">
+          <Link to="/session/wallet">
             <span className="icon">
               <FontAwesomeIcon className="faWallet" icon={faCoins} />
             </span>
@@ -114,7 +114,7 @@ const Sidebar = () => {
           className={activeSection === "settings" ? "active" : ""}
           onClick={() => setActiveSection("settings")}
         >
-          <Link to="#settings">
+          <Link to="/session/settings">
             <span className="icon">
               <FontAwesomeIcon className="faEdit" icon={faEdit} />
             </span>
@@ -189,3 +189,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

@@ -9,6 +9,7 @@ import {
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { toast } from "react-toastify";
 
 import "../styles/ResetPasswd.css";
 
@@ -21,7 +22,7 @@ function ResetPasswd() {
 
     // Make API request to reset password
     try {
-      const response = await fetch("http://localhost:8000/password-reset/", {
+      const response = await fetch("api/v1/password-reset/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,16 +34,14 @@ function ResetPasswd() {
 
       if (response.ok) {
         // Password reset email sent successfully
-        alert("Password reset email sent. Please check your inbox.");
+        toast("Password reset email sent. Please check your inbox.");
       } else {
         const data = await response.json();
         setErrorMessage(data.message);
       }
     } catch (error) {
       console.error("An error occurred during password reset:", error);
-      setErrorMessage(
-        "An error occurred during password reset. Please try again later."
-      );
+      toast("An error occurred during password reset. Please try again later.");
     }
   };
 
@@ -52,34 +51,31 @@ function ResetPasswd() {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form className="reset-password-form" onSubmit={handleResetPassword}>
         <div className="reset-body">
-
-        <div className="reset-group">
-            <p className="reset-password-text">
-               Reset Password
+          <div className="reset-group">
+            <p className="reset-password-text">Reset Password</p>
+            <input
+              type="email"
+              id="email"
+              value={resetPasswordEmail}
+              onChange={(e) => setResetPasswordEmail(e.target.value)}
+              required
+              placeholder="Email"
+              style={{ backgroundColor: "transparent" }}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="reset-button">
+              Reset Password
+            </button>
+          </div>
+          <div className="foget-password">
+            <p className="back-to-login">
+              <a href="/login">Back to Login</a>
             </p>
-          <input
-            type="email"
-            id="email"
-            value={resetPasswordEmail}
-            onChange={(e) => setResetPasswordEmail(e.target.value)}
-            required
-            placeholder="Email"
-            style={{ backgroundColor: "transparent" }}
-          />
-        </div>
-        <div className="form-group">
-          <button type="submit" className="reset-button">
-            Reset Password
-          </button>
-        </div>
-        <div className="foget-password">
-          <p className="back-to-login">
-            <a href="/login">Back to Login</a>
-          </p>
-        </div>
+          </div>
         </div>
       </form>
-      
+
       <section className="about">
         <h2 className="about-title">About</h2>
         <div className="searching-tip-line">
@@ -182,9 +178,8 @@ function ResetPasswd() {
       </section>
 
       <br />
-      <p className="footer">&copy; 2021 Luvmee - All Rights Reserved</p>
+      <p className="footer">&copy; 2021 AlmaMingle - All Rights Reserved</p>
     </div>
-    
   );
 }
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { toast } from "react-toastify";
 import {
   faHeart,
   faLock,
@@ -14,48 +16,34 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../styles/LoginPage.css";
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error] = useState("");
 
-  const { username, password } = formData;
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-  const onSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Make API request to login
-
     try {
-      const response = await fetch("api/v1", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
-
-      if (response.ok) {
-        // Login successful
-        const data = await response.json();
-        localStorage.setItem("token", data.token);
-        window.location.href = "/profile";
-      } else {
-        const data = await response.json();
-        setErrorMessage(data.message);
-      }
-    } catch (error) {
-      console.error("An error occurred during login:", error);
-      setErrorMessage(
-        "An error occurred during login. Please try again later."
+      const response = await axios.post(
+        "/api/login",
+        { username, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+      toast("Failed to log in");
     }
   };
 
@@ -63,16 +51,16 @@ const LoginPage = () => {
     <div className="homepage">
       <h1 className="title">AlmaMingle</h1>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {error && <p className="error-message">{error}</p>}
 
-      <form className="login-form" onSubmit={onChange}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-body">
           <div className="form-group">
             <input
               type="text"
               id="username"
               value={username}
-              onChange={(e) => username(e.target.value)}
+              onChange={handleUsernameChange}
               required
               placeholder="Username"
               style={{ backgroundColor: "transparent" }}
@@ -83,7 +71,7 @@ const LoginPage = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => password(e.target.value)}
+              onChange={handlePasswordChange}
               required
               placeholder="Password"
               style={{ backgroundColor: "transparent" }}
@@ -95,7 +83,7 @@ const LoginPage = () => {
             </button>
             <div className="forget-password">
               <p className="forget-password-text">
-                <a href="/forget-password"> Forget Password?</a>
+                <a href="/session/forget-password"> Forget Password?</a>
               </p>
             </div>
             <p className="login-link">
@@ -208,7 +196,7 @@ const LoginPage = () => {
       </section>
 
       <br />
-      <p className="footer">&copy; 2021 Luvmee - All Rights Reserved</p>
+      <p className="footer">&copy; 2021 AlmaMingle - All Rights Reserved</p>
     </div>
   );
 };
