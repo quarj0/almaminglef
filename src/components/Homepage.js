@@ -51,7 +51,7 @@ function Homepage() {
 
     // Make API request to register user
     try {
-      const response = await fetch("api/v1", {
+      const response = await fetch("http://127.0.0.1:8000/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ function Homepage() {
 
     // Make API request to verify OTP
     try {
-      const response = await fetch("api/v1", {
+      const response = await fetch("http://127.0.0.1:8000/verify-email/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
