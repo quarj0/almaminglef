@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
 
 const Search = () => {
   const [potentialMatches, setPotentialMatches] = useState([]);

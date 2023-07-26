@@ -1,17 +1,16 @@
 import { Fragment, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Homepage from "./components/Homepage";
 import LoginPage from "./components/LoginPage";
 import ForgotPassword from "./components/ResetPasswd";
-import Profile from "./components/Profile";
-import Chat from "./components/Chat";
+import Profile from "./pages/Profile";
+import Chat from "./pages/Chat";
 import Search from "./components/Search";
-import Views from "./components/Views";
+import Views from "./pages/Views";
 import Settings from "./components/Settings";
-import Favorite from "./components/Favorite";
+import Favorite from "./pages/Favorite";
 import DeleteAccount from "./components/DeleteAccountModal";
 import Sidebar from "./components/Sidebar";
 

@@ -15,9 +15,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import Chat from "./Chat";
-import Favorites from "./Favorite";
-import Profile from "./Profile";
+import Chat from "../pages/Chat";
+import Favorites from "../pages/Favorite";
+import Profile from "../pages/Profile";
 import Search from "./Search";
 import Settings from "./Settings";
 
