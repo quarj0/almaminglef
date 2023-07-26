@@ -13,7 +13,9 @@ const Chatting = () => {
 
   const fetchMessages = async () => {
     try {
-      const response = await axios.get("/api/messages");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}message/list`
+      );
       setMessages(response.data);
     } catch (error) {
       console.log(error);
@@ -27,7 +29,9 @@ const Chatting = () => {
     // Fetch chat mates from Django backend
     const fetchChatMates = async () => {
       try {
-        const response = await axios.get("/api/chatmates");
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}message/list`
+        );
         setChatMates(response.data);
       } catch (error) {
         console.log(error);
@@ -51,7 +55,10 @@ const Chatting = () => {
       formData.append("text", inputText);
       formData.append("image", selectedImage);
 
-      await axios.post("/api/messages", formData);
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}message/list`,
+        formData
+      );
 
       // Clear input fields and fetch updated messages
       setInputText("");

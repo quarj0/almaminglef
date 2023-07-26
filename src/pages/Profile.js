@@ -45,7 +45,7 @@ const Profile = ({ userId }) => {
   useEffect(() => {
     if (userId) {
       axios
-        .get(`http://127.0.0.1:8000/profile-view/${userId}`)
+        .get(`${process.env.REACT_APP_API_URL}/account/view/profile/${userId}`)
         .then((response) => {
           setProfileData(response.data);
         })
